@@ -10,13 +10,6 @@ const hpp = require('hpp');
 const cookieParser = require('cookie-parser');
 const compression = require('compression');
 
-/*
-EMAIL_FROM=mostafahaz120@gmail.com
-EMAIL_HOST=sandbox.smtp.mailtrap.io
-EMAIL_USER=607adb60edba68
-EMAIL_PASSWORD=43f7ef0d4148a3
-EMAIL_PORT=2525
-*/
 const AppError = require('./utils/appError');
 const globalErrorHandler = require('./controllers/globalErrorHandler');
 const tourRouter = require('./routes/tourRouter');
