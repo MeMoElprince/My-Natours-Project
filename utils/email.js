@@ -16,15 +16,15 @@ module.exports = class Email{
     }
 
     newTransport(){
-      if(process.env.NODE_ENV === 'production'){
-        return nodemailer.createTransport({
-          service: 'Gmail',
-          auth: {
-            user: process.env.EMAIL_PROD_USER,
-            pass: process.env.EMAIL_PROD_PASSWORD
-          }
-        });
-      }
+      // if(process.env.NODE_ENV === 'production'){
+      //   return nodemailer.createTransport({
+      //     service: 'Gmail',
+      //     auth: {
+      //       user: process.env.EMAIL_PROD_USER,
+      //       pass: process.env.EMAIL_PROD_PASSWORD
+      //     }
+      //   });
+      // }
 
       return nodemailer.createTransport({
         host: process.env.EMAIL_HOST,
