@@ -9,6 +9,7 @@ const sanatizeMongo = require('express-mongo-sanitize');
 const hpp = require('hpp');
 const cookieParser = require('cookie-parser');
 const compression = require('compression');
+const bodyParser = require('body-parser');
 
 const AppError = require('./utils/appError');
 const globalErrorHandler = require('./controllers/globalErrorHandler');
@@ -66,7 +67,7 @@ app.use('/api', limiter);
 
 // app.use(cors());
 
-app.post('/checkout-success', express.raw({type: 'application/json'}), bookingController.checkoutSuccess);
+app.post('/checkout-success', bodyParser.raw({type: 'application/json'}), bookingController.checkoutSuccess);
 
 // Body parser, reading data from body into req.body
 app.use(express.json({limit: '10kb'}));
