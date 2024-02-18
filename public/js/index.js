@@ -28,6 +28,8 @@ if(loginForm){
         const email = document.getElementById('email').value;
         const password = document.getElementById('password').value;
         await authAccount({email, password}, 'login');
+        btn.textContent = 'LOGIN';
+        btn.disabled = false;
     });
 }
 if(signupForm){
@@ -41,6 +43,8 @@ if(signupForm){
         const password = document.getElementById('password').value;
         const passwordConfirm = document.getElementById('passwordConfirm').value;
         await authAccount({name, email, password, passwordConfirm}, 'signup');
+        btn.textContent = 'SIGNUP';
+        btn.disabled = false;
     });
 }
 
