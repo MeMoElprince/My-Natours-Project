@@ -67,7 +67,7 @@ app.use('/api', limiter);
 
 // app.use(cors());
 
-app.post('/checkout-success', bodyParser.raw({type: 'application/json'}), bookingController.checkoutSuccess);
+app.post('/checkout-success', bookingController.checkoutSuccess);
 
 // Body parser, reading data from body into req.body
 app.use(express.json({limit: '10kb'}));
