@@ -5,6 +5,7 @@ const authController = require('./../controllers/authController');
 const bookingController = require('../controllers/bookingController');
 
 
+router.use(viewController.alert);
 
 
 router.get('/', authController.isLoggedIn, viewController.getOverview);

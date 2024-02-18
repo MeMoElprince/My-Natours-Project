@@ -1,6 +1,7 @@
 import {setMap} from './map'
 import {authAccount, logout, updateSettings} from './auth'
 import {checkout} from './booking'
+import {showAlert} from './alert'
 
 
 // DOM
@@ -86,3 +87,8 @@ if(bookingBtn)
         await checkout(tourId);
         bookingBtn.textContent = 'BOOK TOUR NOW!';
     })
+
+
+const alertMessage = document.querySelector('body').dataset.alert;
+if(alertMessage)    
+    showAlert('success', alertMessage, 12);
