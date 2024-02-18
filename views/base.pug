@@ -1,0 +1,24 @@
+html 
+    head 
+        block head
+            script(src="https://js.stripe.com/v3/")
+            meta(charset='UTF-8')
+            meta(name='viewport' content='width=device-width, initial-scale=1.0')
+            link(rel="stylesheet" href="/css/style.css")
+            link(rel='shortcut icon' type='img/png' href='/img/favicon.png')
+            link(href='https://fonts.googleapis.com/css?family=Lato:300,300i,700' rel='stylesheet')
+            title Natours | #{title}
+
+    body 
+        // Heading
+        include _header 
+
+        
+        // Content
+        block content 
+            h1 this is the base(the home)
+
+        // Footer
+        include _footer
+        script(src=`/js/bundle.js`)
+            

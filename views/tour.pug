@@ -1,0 +1,19 @@
+extends base
+
+mixin rate(value)
+    svg.reviews__star(class = `reviews__star--${value}`)
+        use(xlink:href='/img/icons.svg#icon-star')
+
+mixin factBox(lable, value, name)
+    .overview-box__detail
+        svg.overview-box__icon
+            use(xlink:href=`/img/icons.svg#icon-${name}`)
+        span.overview-box__label= lable
+        span.overview-box__text= value 
+
+block append head
+    link(rel="stylesheet" href="/leaflet/leaflet.css")
+    script(src="/leaflet/leaflet.js")
+
+block content 
+    include _tourTemplate

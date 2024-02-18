@@ -1,0 +1,5 @@
+node_modules/
+*.env
+.cache/
+dev_data/
+File google-chrome-stable_current_amd64.deb

@@ -1,0 +1,85 @@
+
+
+
+section.section-header
+  .header__hero
+    .header__hero-overlay &nbsp;
+    img.header__hero-img(src=`/img/tours/${tour.imageCover}`, alt=`${tour.name} cover image tour`)
+  .heading-box
+    h1.heading-primary
+      span= `${tour.name} Tour`
+    .heading-box__group
+      .heading-box__detail
+        svg.heading-box__icon
+          use(xlink:href='/img/icons.svg#icon-clock')
+        span.heading-box__text= `${tour.duration} days`
+      .heading-box__detail
+        svg.heading-box__icon
+          use(xlink:href='/img/icons.svg#icon-map-pin')
+        span.heading-box__text= tour.startLocation.description
+
+section.section-description
+  .overview-box
+    div
+      .overview-box__group
+        h2.heading-secondary.ma-bt-lg Quick facts
+        - const date = tour.startDates[0].toLocaleString('en-us', {month: 'long', year: 'numeric'});
+        +factBox('Next date', date, 'calendar')
+        +factBox('Difficulty', tour.difficulty, 'trending-up')
+        +factBox('Participants', tour.maxGroupSize, 'user')
+        +factBox('Rating', `${tour.ratingsAverage} / 5`, 'star')
+
+      .overview-box__group
+        h2.heading-secondary.ma-bt-lg Your tour guides
+        each guide in tour.guides 
+          .overview-box__detail
+            img.overview-box__img(src=`/img/users/${guide.photo}`, alt=`${guide.role.split('-').join(' ')}`)
+            - let role = 'Error in line 37 in _tourTemplate.pug';
+            - if(guide.role === 'lead-guide') role = 'Lead guide' 
+            - if(guide.role !== 'lead-guide') role = 'Tour guide'
+            span.overview-box__label= role
+            span.overview-box__text= guide.name
+
+  .description-box
+    h2.heading-secondary.ma-bt-lg= `About ${tour.name} tour`
+    - const desc = tour.description.split('\n');
+    each line in desc
+      p.description__text= line
+
+section.section-pictures
+  each image in tour.images
+    .picture-box
+      img.picture-box__img.picture-box__img--1(src=`/img/tours/${image}`, alt=`${image}`)
+
+section.section-map
+  #map(data-locations=`${JSON.stringify(tour.locations)}`)
+ 
+
+section.section-reviews
+  .reviews
+    each review in tour.reviews
+      .reviews__card
+        .reviews__avatar
+          img.reviews__avatar-img(src=`/img/users/${review.user.photo}`, alt=`${review.user.name} photo`)
+          h6.reviews__user=review.user.name
+        p.reviews__text=review.review
+        .reviews__rating
+          each rate in [1, 2, 3, 4, 5]
+            - let value = 'active'
+            - if(review.rating < rate) value = 'inactive';
+            +rate(value)
+
+
+section.section-cta
+  .cta
+    .cta__img.cta__img--logo
+      img(src='/img/logo-white.png', alt='Natours logo')
+    img.cta__img.cta__img--1(src=`/img/tours/${tour.images[0]}`, alt=`${tour.images[0]}`)
+    img.cta__img.cta__img--2(src=`/img/tours/${tour.images[1]}`, alt=`${tour.images[1]}`)
+    .cta__content
+      h2.heading-secondary What are you waiting for?
+      p.cta__text= `${tour.duration} days. 1 adventure. Infinite memories. Make it yours today!`
+      if(user)
+        button.btn.btn--green.span-all-rows#book-tour(tourId=`${tour.id}`) Book tour now!
+      else 
+        a.btn.btn--green.span-all-rows(href='/login') login to join!
