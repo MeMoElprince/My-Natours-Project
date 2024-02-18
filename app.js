@@ -17,6 +17,7 @@ const userRouter = require('./routes/userRouter');
 const reviewRouter = require('./routes/reviewRouter');
 const viewRouter = require('./routes/viewRouter');
 const bookingRouter = require('./routes/bookingRouter');
+const bookingController = require('./controllers/bookingController');
 
 const app = express();
 
@@ -64,6 +65,8 @@ app.use('/api', limiter);
 
 
 // app.use(cors());
+
+app.post('checkout-success', express.raw({type: 'application/json'}), bookingController.checkoutSuccess);
 
 // Body parser, reading data from body into req.body
 app.use(express.json({limit: '10kb'}));
