@@ -4,16 +4,16 @@ main.main
       ul.side-nav
         +field('#', 'settings', 'Settings', 1)
         +field('/my-tours', 'briefcase', 'My bookings')
-        +field('#', 'star', 'My reviews')
-        +field('#', 'credit-card', 'Billing')
+        +field('#', 'star', 'My reviews ***') 
+        +field('#', 'credit-card', 'Billing ***')
       if(user.role === 'admin')  
         .admin-nav
           h5.admin-nav__heading Admin
           ul.side-nav
-            +field('#', 'map', 'Manage tours')
-            +field('#', 'users', 'Manage users')
-            +field('#', 'star', 'Manage reviews')
-            +field('#', 'briefcase', 'Mange bookings')
+            +field('#', 'map', 'Manage tours ***')
+            +field('#', 'users', 'Manage users ***')
+            +field('#', 'star', 'Manage reviews ***')
+            +field('#', 'briefcase', 'Mange bookings ***')
 
     .user-view__content
       .user-view__form-container
